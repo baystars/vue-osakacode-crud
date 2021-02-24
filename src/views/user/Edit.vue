@@ -23,6 +23,7 @@ export default {
   },
   created() {
     console.log("aaaa");
+    const vm = this;
     axios
       .get("http://localhost:8000/users/" + this.$route.params.userId)
       .then((response) => {
@@ -39,7 +40,7 @@ export default {
         email: this.user.email,
       };
       axios
-        .post("http://localhost:8000/users/edit", params)
+        .patch("http://localhost:8000/users/update", params)
         .then((response) => {
           vm.$router.push("/");
         });
